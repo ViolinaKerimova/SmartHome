@@ -1,0 +1,18 @@
+server:
+  port: 8090
+
+smarthome:
+  mqtt:
+    server:
+      address: localhost
+      port: 1883
+
+spring:
+  application:
+    name: smarthome-backend
+  jpa:
+    hibernate.ddl-auto=update
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db
+    username: root
+    password: example
