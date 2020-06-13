@@ -1,11 +1,21 @@
 server:
   port: 8090
 
-smarthome:
+smartHome:
   mqtt:
     server:
       address: localhost
       port: 1883
+    devices:
+      sensor:
+        room: bedroom
+        topic: "nodemcu_sensor/measurements"
+      lightsActuator:
+        room: bedroom
+        topic: "nodemcu_actuator/lights"
+      heaterActuator:
+        room: bedroom
+        topic: "nodemcu_actuator/heat"
 
 spring:
   application:
