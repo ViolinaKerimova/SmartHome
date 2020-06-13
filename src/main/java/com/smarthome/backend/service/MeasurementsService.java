@@ -1,6 +1,7 @@
 package com.smarthome.backend.service;
 
 import com.smarthome.backend.dto.MeasurementDTO;
+import com.smarthome.backend.model.Measurement;
 import com.smarthome.backend.repository.MeasurementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,11 @@ public class MeasurementsService {
                 .collect(Collectors.toList());
     }
 
+    public void saveMultiple(List<MeasurementDTO> measurements) {
+        measurementRepository.saveAll(measurements.stream()
+                .map(dto -> new Measurement(dto.getType(), dto.getUnit(), Double.parseDouble(dto.getValue())))
+                .collect(Collectors.toList()));
+    }
 
 
 }

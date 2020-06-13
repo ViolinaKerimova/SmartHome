@@ -28,18 +28,18 @@ public class MqttMessageGenerator {
     @Value("${smartHome.mqtt.devices.sensor.topic}")
     private String publishTopic;
 
-    @Scheduled(initialDelay = 30_000L, fixedRate = 10_000L)
+    @Scheduled(initialDelay = 5_000L, fixedRate = 10_000L)
     public void generateMessages() throws JsonProcessingException {
         SensorMessageDTO messageDTO = new SensorMessageDTO("app-msg-generator",
                 Arrays.asList(
                         new MeasurementDTO(MeasurementType.LIGHT, MeasurementUnit.VOLTAGE, Double.toString(ThreadLocalRandom.current().nextDouble(0.0, 1023.0))),
-                        new MeasurementDTO(MeasurementType.TEMPERATURE, MeasurementUnit.CELSIUS, Double.toString(ThreadLocalRandom.current().nextDouble(0.0, 1023.0)))
+                        new MeasurementDTO(MeasurementType.TEMPERATURE, MeasurementUnit.CELSIUS, Double.toString(ThreadLocalRandom.current().nextDouble(10.0, 33.0)))
                 )
         );
 
         mqttClient.publishWith()
                 .topic(MqttTopic.of(publishTopic))
-                .payload(objectMapper.writeValueAsBytes(messageDTO))
+                .payload(objectMapper.writeValueAsString(messageDTO).getBytes())
                 .send();
     }
 

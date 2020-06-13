@@ -31,7 +31,7 @@ public class MqttConfig {
     private Integer serverPort;
 
     @Bean
-    public Mqtt3Client mqttClient() throws ExecutionException, InterruptedException {
+    public Mqtt3AsyncClient mqttClient() throws ExecutionException, InterruptedException {
         Mqtt3AsyncClient mqtt3AsyncClient = MqttClient.builder()
                 .useMqttVersion3()
                 .addConnectedListener(listener ->

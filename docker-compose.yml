@@ -12,13 +12,13 @@ services:
     networks:
       - smarthome-backend
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8080:8080"
-    networks:
-      - smarthome-backend
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - smarthome-backend
 
   mosquitto:
     image: eclipse-mosquitto:1.6.9

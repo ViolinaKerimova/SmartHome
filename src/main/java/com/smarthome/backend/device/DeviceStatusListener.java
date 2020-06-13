@@ -10,17 +10,18 @@ import com.smarthome.backend.command.LightsOffCommand;
 import com.smarthome.backend.command.LightsOnCommand;
 import com.smarthome.backend.dto.SensorMessageDTO;
 import com.smarthome.backend.service.CommandExecutor;
+import com.smarthome.backend.service.MeasurementsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 
-@Service
+@Component
 public class DeviceStatusListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DeviceStatusListener.class);
@@ -47,13 +48,17 @@ public class DeviceStatusListener {
     private CommandExecutor commandExecutor;
 
     @Autowired
+    private MeasurementsService measurementsService;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     @PostConstruct
     public void init() {
         mqttClient.subscribeWith()
                 .topicFilter(MqttTopicFilter.of(mqttTopic))
-                .callback(this::onMessageReceived);
+                .callback(this::onMessageReceived)
+                .send();
     }
 
     private void onMessageReceived(Mqtt3Publish mqtt3Publish) {
@@ -69,8 +74,8 @@ public class DeviceStatusListener {
             }
         }
 
+        measurementsService.saveMultiple(messageDTO.getMeasurements());
         produceCommands(messageDTO);
-
     }
 
     /**

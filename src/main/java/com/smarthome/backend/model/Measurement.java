@@ -2,17 +2,17 @@ package com.smarthome.backend.model;
 
 import com.smarthome.backend.enums.MeasurementType;
 import com.smarthome.backend.enums.MeasurementUnit;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "measurement")
 public class Measurement {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
     private MeasurementType type;

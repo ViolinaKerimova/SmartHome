@@ -21,7 +21,7 @@ public class HeaterOffCommand extends AbstractCommand<Void> {
         mqttClient.publishWith()
                 .topic(MqttTopic.of(topic))
                 .qos(MqttQos.EXACTLY_ONCE)
-                .payload("HEAT_ON".getBytes())
+                .payload("HEAT_OFF".getBytes())
                 .send();
 
         return null;

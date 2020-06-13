@@ -21,7 +21,8 @@ spring:
   application:
     name: smarthome-backend
   jpa:
-    hibernate.ddl-auto=update
+    generate-ddl: true
+#    hibernate.hbm-auto: create
   datasource:
     url: jdbc:mysql://localhost:3306/test_db
     username: root
