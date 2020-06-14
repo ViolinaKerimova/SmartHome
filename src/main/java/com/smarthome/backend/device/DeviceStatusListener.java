@@ -34,7 +34,7 @@ public class DeviceStatusListener {
     private Double lightSwitchOnTresholdValue = 233.0;
     private Double lightSitchOffTresholdValue = 899.0;
 
-    // TODO: Use deltas to avoid frequent ON/OFF commands when actual value is fluctating around the threshold value
+    // TODO: Use deltas to avoid frequent ON/OFF commands when actual value is fluctuating around the threshold value
     private static final Double temperatureThresholdDelta = 2.0;
     private static final Double lightThresholdDelta = 200.0;
 

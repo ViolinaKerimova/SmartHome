@@ -17,10 +17,16 @@ public class SmartHomeController {
     @Autowired
     private MeasurementsService measurementsService;
 
-    @GetMapping
+    @GetMapping("/measurements")
     public ResponseEntity<List<MeasurementDTO>> getAllMeasurements() {
         List<MeasurementDTO> allMeasurements = measurementsService.getAllMeasurements();
         return allMeasurements.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(allMeasurements);
+    }
+
+    @GetMapping("/measurements/latest")
+    public ResponseEntity<List<MeasurementDTO>> getLastMeasurements(int numberOfMeasurements) {
+        List<MeasurementDTO> measurements = measurementsService.getLastMeasurements(numberOfMeasurements);
+        return measurements.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(measurements);
     }
 
 }

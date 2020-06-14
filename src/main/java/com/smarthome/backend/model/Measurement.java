@@ -2,6 +2,7 @@ package com.smarthome.backend.model;
 
 import com.smarthome.backend.enums.MeasurementType;
 import com.smarthome.backend.enums.MeasurementUnit;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,10 +16,15 @@ public class Measurement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;
+
     private MeasurementType type;
+
     private MeasurementUnit unit;
+
     private Double value;
-    private LocalDateTime timestamp = LocalDateTime.now();
+
+    @CreationTimestamp
+    private LocalDateTime timestamp;
 
     public Measurement(MeasurementType type, MeasurementUnit unit, Double value) {
         this.type = type;
@@ -63,9 +69,5 @@ public class Measurement {
 
     public LocalDateTime getTimestamp() {
         return timestamp;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
     }
 }

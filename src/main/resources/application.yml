@@ -27,3 +27,7 @@ spring:
     url: jdbc:mysql://localhost:3306/test_db
     username: root
     password: example
+  security:
+    user:
+      name: admin
+      password: admin
