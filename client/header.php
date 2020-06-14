@@ -18,7 +18,6 @@
 	<script type="text/javascript" src="js/client.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/shoppingcart.js"></script>
-	<script type="text/javascript" src="js/portfolio.js"></script>
 </head>
 <body>
 <div  class="upper">

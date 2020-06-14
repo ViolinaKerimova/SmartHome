@@ -9,39 +9,18 @@ function reload_measurement() {
 		$('#measurements-messages').html(render_messages(data.messages));
 	});
 }
-function reload_car() {
-	$.get('car').done(function(data) {
-		$('#car').html(render_car(data.car));
-		$('#car-messages').html(render_messages(data.messages));
+function reload_measurementTen() {
+	$.get('measurements/latest').done(function(data) {
+		$('#measurementsTen').html(render_picturesAll(data));
+		$('#measurementTen-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
 		var data = response.responseJSON;
-		$('#car-messages').html(render_messages(data.messages));
-	});
-}
-
-function reload_picturesman() {
-	$.get('man').done(function(data) {
-		$('#man').html(render_picturesman(data.man));
-		$('#man-messages').html(render_messages(data.messages));
-	}).fail(function(response) {
-		var data = response.responseJSON;
-		$('#man-messages').html(render_messages(data.messages));
-	});
-}
-function reload_pictureswoman() {
-	$.get('woman').done(function(data) {
-		$('#woman').html(render_pictureswoman(data.woman));
-		$('#woman-messages').html(render_messages(data.messages));
-	}).fail(function(response) {
-		var data = response.responseJSON;
-		$('#woman-messages').html(render_messages(data.messages));
+		$('#measurementTen-messages').html(render_messages(data.messages));
 	});
 }
 $(document).ready(function() {
-	
-	//reload_teltypes();
-	//reload_picturesAll();
-	reload_measurement
+	reload_measurementTen();
+	reload_measurement();
     //reload_picturesman();
     //reload_pictureswoman();
 	$(document).on('click', 'a.persons-refresh', function() {
