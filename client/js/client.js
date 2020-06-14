@@ -1,26 +1,26 @@
 // This is a global variable with all rows of the "teltypes" table.
 
-function reload_measurement() {
-	$.get('measurements').done(function(data) {
-		$('#measurements').html(render_picturesAll(data));
-		$('#measurements-messages').html(render_messages(data.messages));
+function reload_measurementTemp() {
+	$.get('measurements/temperature/latest').done(function(data) {
+		$('#measurementsTemp').html(render_measurementTemp(data));
+		$('#measurementsTemp-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
 		var data = response.responseJSON;
-		$('#measurements-messages').html(render_messages(data.messages));
+		$('#measurementsTemp-messages').html(render_messages(data.messages));
 	});
 }
-function reload_measurementTen() {
-	$.get('measurements/latest').done(function(data) {
-		$('#measurementsTen').html(render_picturesAll(data));
-		$('#measurementTen-messages').html(render_messages(data.messages));
+function reload_measurementLight() {
+	$.get('measurements/light/latest').done(function(data) {
+		$('#measurementsLight').html(render_measurementLight(data));
+		$('#measurementLight-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
 		var data = response.responseJSON;
-		$('#measurementTen-messages').html(render_messages(data.messages));
+		$('#measurementLight-messages').html(render_messages(data.messages));
 	});
 }
 $(document).ready(function() {
-	reload_measurementTen();
-	reload_measurement();
+	reload_measurementLight()
+	reload_measurementTemp()
     //reload_picturesman();
     //reload_pictureswoman();
 	$(document).on('click', 'a.persons-refresh', function() {
