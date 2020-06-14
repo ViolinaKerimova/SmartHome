@@ -1,13 +1,12 @@
 // This is a global variable with all rows of the "teltypes" table.
-var TELTYPES = [];
 
-function reload_picturesAll() {
-	$.get('pictures').done(function(data) {
-		$('#picturesAll').html(render_picturesAll(data));
-		$('#picturesAll-messages').html(render_messages(data.messages));
+function reload_measurement() {
+	$.get('measurements').done(function(data) {
+		$('#measurements').html(render_picturesAll(data));
+		$('#measurements-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
 		var data = response.responseJSON;
-		$('#picturesAll-messages').html(render_messages(data.messages));
+		$('#measurements-messages').html(render_messages(data.messages));
 	});
 }
 function reload_car() {
@@ -41,11 +40,12 @@ function reload_pictureswoman() {
 $(document).ready(function() {
 	
 	//reload_teltypes();
-	reload_picturesAll();
-    reload_picturesman();
-    reload_pictureswoman();
+	//reload_picturesAll();
+	reload_measurement
+    //reload_picturesman();
+    //reload_pictureswoman();
 	$(document).on('click', 'a.persons-refresh', function() {
-		reload_persons();
+		reload_measurement();
 		return false; // disables default browser behavior when a hyper-link is clicked.
 	});
 

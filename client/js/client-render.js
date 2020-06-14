@@ -1,16 +1,17 @@
 // All these function render piece of HTML to plug into the DOM tree.
 // The HTML can be plugged using $('#id').html(new_html);
 
-function render_pictures(pictures) {
+function render_measurements(measurements) {
 var html = "";
-	for(var i=0; i<pictures.length-3; i++) {
-			var p = pictures[i];
+	for(var i=0; i<measurements.length; i++) {
+			var m = measurements[i];
 			html += "<tr>" +
 		   "<div class='row'>"+
 		   "<div class='column' style='background-color:pink;'>"+	
-			  "<img src="+ html_escape(p.name) +" alt='Lights' style='background-color:pink;width:100%'>"+
-			  "<h4>" + p.price +"</h4>"+
-			  "<p>"+ p.category +"</p>"+
+			 "<h4>" + html_escape(m.type) +"</h4>"+
+			 "<h4>" + html_escape(m.unit) +"</h4>"+
+		    "<h4>" + m.value +"</h4>"+
+		    "<h4>" + html_escape(m.timestamp) +"</h4>"+
 			"</div>" +
 			"</div>"
 			"</tr>"

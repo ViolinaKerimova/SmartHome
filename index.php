@@ -42,6 +42,9 @@ button:hover {
 }
 
 img.avatar {
+  display: block;
+  margin-left: 40%;
+  margin-right: 60%;
   width: 40%;
   border-radius: 50%;
 }
@@ -69,11 +72,9 @@ span.psw {
 </head>
 <body>
 
-<h2 >Login</h2>
-
 <form action="client/action_page.php" method="post">
   <div  class="imgcontainer">
-    <img  src="client/images/icone1.png" alt="Login" class="avatar">
+   <img  src="client/images/icone1.png" alt="Login" class="avatar">
   </div>
   <div class="container">
     <label for="uname"><b>Username</b></label> 

@@ -1,0 +1,237 @@
+<style>
+div #tabMenu {
+background-color : black;
+margin:10px 0 0 0;
+padding:5px 0 0 50px;
+}
+
+ul.topnev {
+padding:0;
+list-style:none;
+border:#000;
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+ul.topnev li {
+margin:0;
+padding:0;
+list-style:none;
+display:inline;
+}
+ul.topnev li a {
+padding:10px;
+font:bold 15px/24px Arial, Helvetica, sans-serif;
+text-decoration:none;
+color: black;
+}
+ul.topnev li a:hover {
+background: black;
+color:#3e3a3a
+}
+ul.topnev li a.active {
+background:#FFF;
+color:#3e3a3a
+}
+
+div .section{
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: pink;
+  text-align: center;
+  padding: 44px 16px;
+  text-decoration: none;
+  padding: 1px 5px 1px 5px;
+
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+* {box-sizing:border-box}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+section.footer{
+	display : block ;
+	background-color: black;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/* portfolio */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column (if you want) */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide columns by default */
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: pink;
+  cursor: pointer;
+}
+
+/* Add a grey background color on mouse-over */
+.btn:hover {
+  background-color: black;
+}
+
+/* Add a dark background color to the active button */
+.btn.active {
+  background-color: blue;
+   color: white;
+}
+.upper{
+	display : block ;
+	background-color: black;
+	color: black;
+    padding: 10px 12px;
+    text-decoration: none;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.col {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+  padding-top: 150%;
+  margin-bottom: 10px;
+  position: relative;
+  display: block;
+}
+
+.cont {
+  float: left;
+  width: 33.33%;
+  padding: 35px;
+}
+/* Clearfix (clear floats) */
+.col::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.columnman {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.rowman::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
