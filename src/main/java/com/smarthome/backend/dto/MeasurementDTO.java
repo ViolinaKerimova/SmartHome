@@ -17,7 +17,7 @@ public class MeasurementDTO {
     @JsonAlias({"value", "measurementValue"})
     private String value;
 
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime timestamp;
 
     public MeasurementDTO(MeasurementType type, MeasurementUnit unit, String value) {
         this.type = type;
