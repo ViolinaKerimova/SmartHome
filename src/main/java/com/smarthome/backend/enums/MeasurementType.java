@@ -10,9 +10,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum MeasurementType {
 
-    TEMPERATURE("Temperature"),
-    HUMIDITY("Humidity"),
-    LIGHT("Light");
+    TEMPERATURE("temperature"),
+    HUMIDITY("humidity"),
+    LIGHT("light");
 
     private final String type;
 

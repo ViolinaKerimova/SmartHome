@@ -1,6 +1,7 @@
 package com.smarthome.backend.service;
 
 import com.smarthome.backend.dto.MeasurementDTO;
+import com.smarthome.backend.enums.MeasurementType;
 import com.smarthome.backend.model.Measurement;
 import com.smarthome.backend.repository.MeasurementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,7 @@ public class MeasurementsService {
 
     public List<MeasurementDTO> getAllMeasurements() {
         return measurementRepository.findAll().stream()
-                .map(measurement -> {
-                    MeasurementDTO measurementDTO = new MeasurementDTO();
-                    measurementDTO.setValue(measurement.getValue().toString());
-                    measurementDTO.setUnit(measurement.getUnit());
-                    measurementDTO.setType(measurement.getType());
-                    measurementDTO.setTimestamp(measurement.getTimestamp());
-                    return measurementDTO;
-                })
+                .map(MeasurementsService::entityToDto)
                 .collect(Collectors.toList());
     }
 
@@ -38,15 +32,30 @@ public class MeasurementsService {
 
     public List<MeasurementDTO> getLastMeasurements(int numberOfMeasurements) {
         return measurementRepository.findAll(PageRequest.of(0, numberOfMeasurements, Sort.Direction.DESC, "id")).get()
-                .map(measurement -> {
-                    MeasurementDTO measurementDTO = new MeasurementDTO();
-                    measurementDTO.setValue(measurement.getValue().toString());
-                    measurementDTO.setUnit(measurement.getUnit());
-                    measurementDTO.setType(measurement.getType());
-                    measurementDTO.setTimestamp(measurement.getTimestamp());
-                    return measurementDTO;
-                })
+                .map(MeasurementsService::entityToDto)
                 .collect(Collectors.toList());
+    }
+
+    public List<MeasurementDTO> getAllByType(String type) {
+        return measurementRepository.findByType(MeasurementType.fromString(type)).stream()
+                .map(MeasurementsService::entityToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<MeasurementDTO> getLastMeasurementsByType(String type, int numberOfMeasurements) {
+        return measurementRepository.findByType(PageRequest.of(0, numberOfMeasurements, Sort.Direction.DESC, "id"), MeasurementType.fromString(type))
+                .stream()
+                .map(MeasurementsService::entityToDto)
+                .collect(Collectors.toList());
+    }
+
+    private static MeasurementDTO entityToDto(Measurement measurement) {
+        MeasurementDTO measurementDTO = new MeasurementDTO();
+        measurementDTO.setValue(measurement.getValue().toString());
+        measurementDTO.setUnit(measurement.getUnit());
+        measurementDTO.setType(measurement.getType());
+        measurementDTO.setTimestamp(measurement.getTimestamp());
+        return measurementDTO;
     }
 
 }
