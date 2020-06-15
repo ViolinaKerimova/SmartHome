@@ -14,6 +14,7 @@ import java.util.List;
 // TODO: refactor & split into multiple controllers without mixing responsibilities!
 @RestController
 @RequestMapping("/smarthome")
+@CrossOrigin(origins = "http://localhost")
 public class SmartHomeController {
 
     @Autowired
