@@ -1,22 +1,26 @@
 package com.smarthome.backend.controller;
 
+import com.smarthome.backend.device.DeviceCommandPublisher;
+import com.smarthome.backend.dto.CommandDTO;
 import com.smarthome.backend.dto.MeasurementDTO;
 import com.smarthome.backend.service.MeasurementsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// TODO: refactor & split into multiple controllers without mixing responsibilities!
 @RestController
 @RequestMapping("/smarthome")
 public class SmartHomeController {
 
     @Autowired
     private MeasurementsService measurementsService;
+
+    @Autowired
+    private DeviceCommandPublisher deviceCommandPublisher;
 
     @GetMapping("/measurements")
     public ResponseEntity<List<MeasurementDTO>> getAllMeasurements() {
@@ -40,6 +44,12 @@ public class SmartHomeController {
     public ResponseEntity<List<MeasurementDTO>> getLatestMeasurementsByType(@PathVariable String type, int numberOfMeasurements) {
         List<MeasurementDTO> latestByType = measurementsService.getLastMeasurementsByType(type, numberOfMeasurements);
         return latestByType.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(latestByType);
+    }
+
+    @PostMapping("/device/command")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void applyDeviceCommand(@RequestBody CommandDTO commandDTO) {
+        deviceCommandPublisher.publishCommand(commandDTO);
     }
 
 }
