@@ -16,6 +16,7 @@ smartHome:
       heaterActuator:
         room: bedroom
         topic: "nodemcu_actuator/heat"
+    enableMessageGenerator: false
 
 spring:
   application:

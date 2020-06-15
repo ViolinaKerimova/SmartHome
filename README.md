@@ -31,13 +31,21 @@ This is the back-end server application for the "Smart Home" university project 
 ## Sample HTTP requests
 
 ##### Fetch latest 5 light measurements:
-```GET http://localhost:8090/smarthome/measurements/light/latest?numberOfMeasurements=5```
+```GET http://localhost:8090/smarthome/measurements/light/latest?num=5```
 
 ##### Fetch latest 5 temperature measurements:
-```GET http://localhost:8090/smarthome/measurements/temperature/latest?numberOfMeasurements=5```
+```GET http://localhost:8090/smarthome/measurements/temperature/latest?num=5```
 
 ##### Fetch all light measurements:
 ```GET http://localhost:8090/smarthome/measurements/light```
 
 ##### Fetch all temperature measurements:
 ```GET http://localhost:8090/smarthome/measurements/temperature```
+
+##### Issue a lights-on command to a device:
+```POST http://localhost:8090/smarthome/device/command``` with the following JSON request body: 
+```json
+  { 
+    "command": "LIGHTS_ON" 
+  }
+```

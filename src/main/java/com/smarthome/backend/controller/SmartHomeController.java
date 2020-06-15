@@ -29,8 +29,8 @@ public class SmartHomeController {
     }
 
     @GetMapping("/measurements/latest")
-    public ResponseEntity<List<MeasurementDTO>> getLastMeasurements(int numberOfMeasurements) {
-        List<MeasurementDTO> measurements = measurementsService.getLastMeasurements(numberOfMeasurements);
+    public ResponseEntity<List<MeasurementDTO>> getLastMeasurements(@RequestParam(defaultValue = "100") Integer num) {
+        List<MeasurementDTO> measurements = measurementsService.getLastMeasurements(num);
         return measurements.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(measurements);
     }
 
@@ -41,8 +41,8 @@ public class SmartHomeController {
     }
 
     @GetMapping("/measurements/{type}/latest")
-    public ResponseEntity<List<MeasurementDTO>> getLatestMeasurementsByType(@PathVariable String type, int numberOfMeasurements) {
-        List<MeasurementDTO> latestByType = measurementsService.getLastMeasurementsByType(type, numberOfMeasurements);
+    public ResponseEntity<List<MeasurementDTO>> getLatestMeasurementsByType(@PathVariable String type, @RequestParam(defaultValue = "100") Integer num) {
+        List<MeasurementDTO> latestByType = measurementsService.getLastMeasurementsByType(type, num);
         return latestByType.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(latestByType);
     }
 
