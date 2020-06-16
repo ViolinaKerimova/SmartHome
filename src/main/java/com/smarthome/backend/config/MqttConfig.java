@@ -61,7 +61,7 @@ public class MqttConfig {
                 .applyAutomaticReconnect()
                 .buildAsync();
 
-        mqttClientConnect(mqtt3AsyncClient);
+        //mqttClientConnect(mqtt3AsyncClient);
 
         return mqtt3AsyncClient;
     }
