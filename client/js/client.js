@@ -1,26 +1,26 @@
 // This is a global variable with all rows of the "teltypes" table.
 
-function reload_measurementTemp() {
-	$.get('measurements/temperature/latest').done(function(data) {
-		$('#measurementsTemp').html(render_measurementTemp(data));
-		$('#measurementsTemp-messages').html(render_messages(data.messages));
+function reload_Light() {
+	$.get('http://localhost:8090/smarthome/measurements/light/latest').done(function(data) {
+		$('#Light').html(render_Light(data));
+		$('#Light-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
 		var data = response.responseJSON;
-		$('#measurementsTemp-messages').html(render_messages(data.messages));
+		$('#Light-messages').html(render_messages(data.messages));
 	});
 }
-function reload_measurementLight() {
-	$.get('measurements/light/latest').done(function(data) {
-		$('#measurementsLight').html(render_measurementLight(data));
-		$('#measurementLight-messages').html(render_messages(data.messages));
+function reload_Temp() {
+	$.get('http://localhost:8090/smarthome/measurements/temperature/latest').done(function(data) {
+		$('#Temp').html(render_Temp(data));
+		$('#Temp-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
 		var data = response.responseJSON;
-		$('#measurementLight-messages').html(render_messages(data.messages));
+		$('#Temp-messages').html(render_messages(data.messages));
 	});
 }
 $(document).ready(function() {
-	reload_measurementLight()
-	reload_measurementTemp()
+	reload_Light();
+	reload_Temp();
     //reload_picturesman();
     //reload_pictureswoman();
 	$(document).on('click', 'a.persons-refresh', function() {

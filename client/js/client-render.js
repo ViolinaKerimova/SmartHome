@@ -1,13 +1,13 @@
 // All these function render piece of HTML to plug into the DOM tree.
 // The HTML can be plugged using $('#id').html(new_html);
 
-function render_measurementLight(measurements) {
+function render_Light(measurements) {
 var html = "";
 	for(var i=0; i<measurements.length; i++) {
 			var m = measurements[i];
 			html += "<tr>" +
 		   "<div class='row'>"+
-		   "<div class='column'>"+	
+		   "<div class='column' style='background-color:pink;'>"+	
 			 "<h4>" + html_escape(m.type) +"</h4>"+
 			 "<h4>" + html_escape(m.unit) +"</h4>"+
 		    "<h4>" + m.value +"</h4>"+
@@ -20,13 +20,13 @@ var html = "";
 	html = "<table class='grid'>"+html+"</table>";
 	return html;
 }
-function render_measurementTemp(measurements) {
+function render_Temp(measurements) {
 var html = "";
 	for(var i=0; i<measurements.length; i++) {
 			var m = measurements[i];
 			html += "<tr>" +
 		   "<div class='row'>"+
-		   "<div class='column'>"+	
+		   "<div class='column' style='background-color:pink;'>"+	
 			 "<h4>" + html_escape(m.type) +"</h4>"+
 			 "<h4>" + html_escape(m.unit) +"</h4>"+
 		    "<h4>" + m.value +"</h4>"+
@@ -34,6 +34,7 @@ var html = "";
 			"</div>" +
 			"</div>"
 			"</tr>"
+			
 	}
 	html = "<table class='grid'>"+html+"</table>";
 	return html;

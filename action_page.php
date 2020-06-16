@@ -1,4 +1,5 @@
 <?php require 'header.php'; ?> 
+
 	 <div id="lista-cursos">
 	<div id='measurementsTemp'></div>
 	<div id='measurementsTemp-messages'></div>
