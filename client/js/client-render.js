@@ -2,41 +2,54 @@
 // The HTML can be plugged using $('#id').html(new_html);
 
 function render_Light(measurements) {
-var html = "";
+var html = "<tr>"+
+			"<th>Timestamp</th>"+
+			"<th>Unit</th>"+
+			"<th>Type</th>"+
+			"<th>Value</th>"+
+		"</tr>";
+
 	for(var i=0; i<measurements.length; i++) {
-			var m = measurements[i];
-			html += "<tr>" +
-		   "<div class='row'>"+
-		   "<div class='column' style='background-color:pink;'>"+	
-			 "<h4>" + html_escape(m.type) +"</h4>"+
-			 "<h4>" + html_escape(m.unit) +"</h4>"+
-		    "<h4>" + m.value +"</h4>"+
-		    "<h4>" + html_escape(m.timestamp) +"</h4>"+
-			"</div>" +
-			"</div>"
-			"</tr>"
-			
+		var p = measurements[i];
+		html += "<tr>" +
+			"<td><a href='#' data-person-id='" + p.id + "' class='person-telephones'>" +
+				html_escape(p.timestamp) +
+			"</a></td>"+
+			"<td>" + p.unit + "</td>" +
+			"<td>" + html_escape(p.type) + "</td>" +
+			"<td>" + p.value + "</td>" +
+		"</tr>";
+	}
+	html = "<div style='margin-left:auto; margin-right:auto;'>"+"<table class='grid'>"+html+"</table>"+ "</div>";
+	return html;
+}
+function render_Temp(measurements) {
+	
+var html = "<tr>"+
+			"<th>Timestamp</th>"+
+			"<th>Unit</th>"+
+			"<th>Type</th>"+
+			"<th>Value</th>"+
+		"</tr>";
+
+	for(var i=0; i<measurements.length; i++) {
+		var p = measurements[i];
+		html += "<tr>" +
+			"<td><a href='#' data-person-id='" + p.id + "' class='person-telephones'>" +
+				html_escape(p.timestamp) +
+			"</a></td>"+
+			"<td>" + p.unit + "</td>" +
+			"<td>" + html_escape(p.type) + "</td>" +
+			"<td>" + p.value + "</td>" +
+		"</tr>";
 	}
 	html = "<table class='grid'>"+html+"</table>";
 	return html;
 }
-function render_Temp(measurements) {
-var html = "";
-	for(var i=0; i<measurements.length; i++) {
-			var m = measurements[i];
-			html += "<tr>" +
-		   "<div class='row'>"+
-		   "<div class='column' style='background-color:pink;'>"+	
-			 "<h4>" + html_escape(m.type) +"</h4>"+
-			 "<h4>" + html_escape(m.unit) +"</h4>"+
-		    "<h4>" + m.value +"</h4>"+
-		    "<h4>" + html_escape(m.timestamp) +"</h4>"+
-			"</div>" +
-			"</div>"
-			"</tr>"
-			
-	}
-	html = "<table class='grid'>"+html+"</table>";
+function render_Getcommand(lamp, heater, cooler) {
+    var html ="<div class='text'> THE LIGHT IS: " + light+ "</br>"+
+	          "<div class='text'> THE HEATER IS: " + heater+
+			  "<div class='text'> THE COOLER IS: " + cooler;
 	return html;
 }
 function render_picturesman(man) {

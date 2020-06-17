@@ -3,6 +3,7 @@ div #tabMenu {
 background-color : black;
 margin:10px 0 0 0;
 padding:5px 0 0 50px;
+font-weight: bold;
 }
 
 ul.topnev {
@@ -22,7 +23,7 @@ display:inline;
 }
 ul.topnev li a {
 padding:10px;
-font:bold 15px/24px Arial, Helvetica, sans-serif;
+font:bold 20px/25px Arial, Helvetica, sans-serif;
 text-decoration:none;
 color: black;
 }
@@ -50,7 +51,7 @@ li a {
   display: block;
   color: pink;
   text-align: center;
-  padding: 44px 16px;
+  padding: 34px 16px;
   text-decoration: none;
   padding: 1px 5px 1px 5px;
 
@@ -76,7 +77,9 @@ li a:hover:not(.active) {
 .mySlides {
   display: none;
 }
-
+img {
+  float: right;
+}
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -233,5 +236,27 @@ h1 {
   content: "";
   clear: both;
   display: table;
+}
+
+table {
+  border-collapse: collapse;
+  width: 70%;
+  text-align: center;
+  float: center;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #F3F97A}
+
+th {
+  height:10px;
+}
+th {
+  background-color: black;
+  color: white;
 }
 </style>

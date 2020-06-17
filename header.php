@@ -28,8 +28,10 @@
   <li><a href="action_page.php">Home</a></li>
   <li><a href="measurements.php">Measurements</a></li>
   <li><a href="information.php">Information</a></li>
-   <li><a href="information.php">Contact us</a></li>
+   <li><a href="information.php">Contact us</a></li> 
  </ul>
+ </br> </br>
+   <img style =" float: right;" src="client/images/lightt.png" alt="Girl in a jacket" width="200" height="200">
 </div>
 <div >
 </div>
