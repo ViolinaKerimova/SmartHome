@@ -1,7 +1,5 @@
 // This is a global variable with all rows of the "teltypes" table.
-var light=[];
-var heater=[];
-var cooler=[];
+
 function reload_Light() {
 	$.get('http://localhost:8090/smarthome/measurements/light/latest').done(function(data) {
 		//$.get('http://localhost:8090/smarthome/measurements/light/latest').done(function(data) {
@@ -21,20 +19,30 @@ function reload_Temp() {
 		$('#Temp-messages').html(render_messages(data.messages));
 	});
 }
-function reload_Command(light,heater,cooler){
-	$.get('http://localhost:8090/smarthome/device?light='+ light  +'&heater=' +heater +'&cooler='+ cooler ).done(function(data) {
-		$('#command').html(render_Getcommand(data.light, data.heater,data.cooler));
+function reload_Command(){
+	$.get('http://localhost:8090/smarthome/device/state').done(function(data) {
+		$('#command').html(render_Getcommand(data));
 		$('#command-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
 		var data = response.responseJSON;
 		$('#command-messages').html(render_messages(data.messages));
 	});
 }
+function reload_History() {
+	$.get('http://localhost:8090/smarthome/device/command/history').done(function(data) {
+		$('#history').html(render_History(data));
+		$('#history-messages').html(render_messages(data.messages));
+	}).fail(function(response) {
+		var data = response.responseJSON;
+		$('#history-messages').html(render_messages(data.messages));
+	});
+}
 $(document).ready(function() {
 	setTimeout(function(){
 		reload_Light();
 		reload_Temp();
-		reload_Command(light,heater,cooler);
+		reload_Command();
+		reload_History();
 		
 	/*
 		$(document).on('click', 'button.light', function() {

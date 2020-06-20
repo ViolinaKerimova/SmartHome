@@ -24,7 +24,6 @@ var html = "<tr>"+
 	return html;
 }
 function render_Temp(measurements) {
-	
 var html = "<tr>"+
 			"<th>Timestamp</th>"+
 			"<th>Unit</th>"+
@@ -46,12 +45,33 @@ var html = "<tr>"+
 	html = "<table class='grid'>"+html+"</table>";
 	return html;
 }
-function render_Getcommand(lamp, heater, cooler) {
-    var html ="<div class='text'> THE LIGHT IS: " + light+ "</br>"+
-	          "<div class='text'> THE HEATER IS: " + heater+
-			  "<div class='text'> THE COOLER IS: " + cooler;
+function render_Getcommand(data) {
+    var html ="<div class='text'> THE LIGHT IS: " + data.light+ "</br>"+
+	          "<div class='text'> THE HEATER IS: " + data.heater+
+			  "<div class='text'> THE COOLER IS: " + data.cooler;
 	return html;
 }
+
+function render_History(measurements) {
+var html = "<tr>"+
+			"<th>Timestamp</th>"+
+			"<th>CommandType</th>"+
+		"</tr>";
+
+	for(var i=0; i<measurements.length; i++) {
+		var p = measurements[i];
+		html += "<tr>" +
+			"<td><a href='#' data-person-id='" + p.id + "' class='person-telephones'>" +
+				html_escape(p.timestamp) +
+			"</a></td>"+
+			"<td>" + html_escape(p.timestamp) + "</td>" +
+			
+		"</tr>";
+	}
+	html = "<div style='margin-left:auto; margin-right:auto;'>"+"<table class='grid'>"+html+"</table>"+ "</div>";
+	return html;
+}
+
 function render_picturesman(man) {
 	var a=15;
 var html = "";
