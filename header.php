@@ -14,9 +14,6 @@
 	<script type="text/javascript" src="client/js/jquery-rest.js"></script>
 	<script type="text/javascript" src="client/js/client-render.js"></script>
 	<script type="text/javascript" src="client/js/client.js"></script>
-	<script type="text/javascript" src="client/js/app.js"></script>
-	<script type="text/javascript" src="client/js/shoppingcart.js"></script>
-	<script type="text/javascript" src="client/js/portfolio.js"></script>
 </head>
 <body>
 <div  class="upper">

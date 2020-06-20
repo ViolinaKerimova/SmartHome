@@ -1,8 +1,5 @@
-// This is a global variable with all rows of the "teltypes" table.
-
 function reload_Light() {
 	$.get('http://localhost:8090/smarthome/measurements/light/latest').done(function(data) {
-		//$.get('http://localhost:8090/smarthome/measurements/light/latest').done(function(data) {
 		$('#Light').html(render_Light(data));
 		$('#Light-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
@@ -37,38 +34,31 @@ function reload_History() {
 		$('#history-messages').html(render_messages(data.messages));
 	});
 }
+function reload_Button() {
+		$('#button').html(render_button_form_static());
+}
 $(document).ready(function() {
 	setTimeout(function(){
 		reload_Light();
 		reload_Temp();
 		reload_Command();
 		reload_History();
-		
-	/*
-		$(document).on('click', 'button.light', function() {
-			var new_light= { command: '' };
-			$('#light').html(render_light(new_light));
-			$('#light-messages').html('');
-			return false;
-		});
-*/
+		reload_Button();
 		
 		$(document).on('click', 'button.command', function() {
-			var command = $(this).attr('switch');
-			var commandJson = { command: command };
-			console.log(commandJson);
-			$('#commandJson').html('');
-			$.postJSON('http://localhost:8090/smarthome/device/command/' + commandJson).done(function(data) {
+		var commandJson = { command: '' };
+		console.log(commandJson);
+		$('#button').html(render_button_form(commandJson));
+		$('#button-messages').html('');
+		$.postJSON('http://localhost:8090/smarthome/device/command', commandJson).done(function(data) {
 				$('#commandJson').html('');
 				$('#commandJson-messages').html(render_messages(data.messages));
 				reload_Command();
 			}).fail(function(response) {
 				var data = response.responseJSON;
-				$('#commandJson-messages').html(render_messages(data.messages));
+				$('#commandJson-messages').html(render_messages(data));
 			});
 			return false;
-		});
-		
-
+	    });
 	},400);
 });

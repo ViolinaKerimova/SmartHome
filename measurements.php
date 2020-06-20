@@ -7,4 +7,8 @@
 	<div id='Temp'></div>
 	<div id='Temp-messages'></div>
 	 </div>
+	 <div id="lista-cursos">
+	<div id='commandJson'></div>
+	<div id='commandJson-messages'></div>
+	 </div>
 <?php include 'footer.php';?>
