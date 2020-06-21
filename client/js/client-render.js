@@ -46,7 +46,7 @@ var html = "<tr>"+
 	return html;
 }
 function render_Getcommand(data) {
-    var html ="<div class='text'> THE LIGHT IS: " + data.light+ "</br>"+
+    var html ="<div  class='text'> THE LIGHT IS: " + data.light+ "</br>"+
 	          "<div class='text'> THE HEAT IS: " + data.heater+
 			  "<div class='text'> THE COOL IS: " + data.cooler;
 	return html;
@@ -76,10 +76,16 @@ var html = "<tr>"+
 function render_button_form(commandJson) {
 	var html = '';
 	html += "<form action='#' method='post'>";
-	html += "<p><label>Supported commands: LIGHTS_ON, LIGHTS_OFF, HEAT_ON, HEAT_OFF, COOL_ON, COOL_OFF"+
-    "</label>";
-	html += "<input  id='MyInputId' /></p>";
-	html += "<p><button class='command'>Save</button></p>";
+	
+    html +=" <label for='command'>Choose a command:</label> " + " <select id='myselect'> "+
+		"<option value='LIGHTS_ON'>LIGHTS_ON</option> "+
+		"<option value='LIGHTS_OFF'>LIGHTS_OFF</option>"+
+		"<option value='HEAT_ON'>HEAT_ON</option>"+
+		"<option value='HEAT_OFF'>HEAT_OFF</option>"+
+		"<option value='COOL_ON'>COOL_ON</option>"+
+		"<option value='COOL_OFF'>COOL_OFF</option>"+
+    " </select>";
+	html += "<p><button style='color:black;' class='command'>Send</button></p>";
 	html += "</form>";
 	return html;
 }

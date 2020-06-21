@@ -28,7 +28,7 @@ function reload_Command(){
 	});
 }
 function reload_History() {
-	$.get('http://localhost:8090/smarthome/device/command/history').done(function(data) {
+	$.get('http://localhost:8090/smarthome/device/command/history?num=15').done(function(data) {
 		$('#history').html(render_History(data));
 		$('#history-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
@@ -48,10 +48,8 @@ $(document).ready(function() {
 		reload_Button();
 		
 		$(document).on('click', 'button.command', function() {
-			// var $inputs = $('#form :input');
-			console.log('hhhhhhhhhhhhhhhiii');
-			 
-			  var getVal = $("#MyInputId").val();
+		    var getVal =$( "#myselect" ).val();
+			 // var getVal = $("#MyInputId").val();
             // $("p").append(getVal);
 			 //var command_post = $('form').attr('input');
 			var commandJson = { command: getVal};
