@@ -47,8 +47,8 @@ var html = "<tr>"+
 }
 function render_Getcommand(data) {
     var html ="<div class='text'> THE LIGHT IS: " + data.light+ "</br>"+
-	          "<div class='text'> THE HEATER IS: " + data.heater+
-			  "<div class='text'> THE COOLER IS: " + data.cooler;
+	          "<div class='text'> THE HEAT IS: " + data.heater+
+			  "<div class='text'> THE COOL IS: " + data.cooler;
 	return html;
 }
 
@@ -64,7 +64,7 @@ var html = "<tr>"+
 			"<td><a href='#' data-person-id='" + p.id + "' class='person-telephones'>" +
 				html_escape(p.timestamp) +
 			"</a></td>"+
-			"<td>" + html_escape(p.timestamp) + "</td>" +
+			"<td>" + html_escape(p.commandType) + "</td>" +
 			
 		"</tr>";
 	}
@@ -72,22 +72,14 @@ var html = "<tr>"+
 	return html;
 }
 
-function render_button_form_static() {
-	var html = '';
-	html += "<form action='#' method='post'>";
-	html += "<p><label>Supported commands: LIGHTS_ON, LIGHTS_OFF, HEAT_ON, HEAT_OFF, COOL_ON, COOL_OFF"+
-    "</label><input name='command' value='" + html_escape(command) + "'/></p>";
-	html += "<p><button class='command'>Save</button></p>";
-	html += "</form>";
-	return html;
-}
+
 function render_button_form(commandJson) {
 	var html = '';
 	html += "<form action='#' method='post'>";
 	html += "<p><label>Supported commands: LIGHTS_ON, LIGHTS_OFF, HEAT_ON, HEAT_OFF, COOL_ON, COOL_OFF"+
     "</label>";
-	html += "<input name='comment'  value='" + html_escape(commandJson.address) +"'/></p>";
-	html += "<p><button>Save</button></p>";
+	html += "<input  id='MyInputId' /></p>";
+	html += "<p><button class='command'>Save</button></p>";
 	html += "</form>";
 	return html;
 }

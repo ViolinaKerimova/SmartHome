@@ -1,5 +1,7 @@
+var command=[];
+
 function reload_Light() {
-	$.get('http://localhost:8090/smarthome/measurements/light/latest').done(function(data) {
+	$.get('http://localhost:8090/smarthome/measurements/light/latest?num=5').done(function(data) {
 		$('#Light').html(render_Light(data));
 		$('#Light-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
@@ -8,7 +10,7 @@ function reload_Light() {
 	});
 }
 function reload_Temp() {
-	$.get('http://localhost:8090/smarthome/measurements/temperature/latest').done(function(data) {
+	$.get('http://localhost:8090/smarthome/measurements/temperature/latest?num=5').done(function(data) {
 		$('#Temp').html(render_Temp(data));
 		$('#Temp-messages').html(render_messages(data.messages));
 	}).fail(function(response) {
@@ -35,7 +37,7 @@ function reload_History() {
 	});
 }
 function reload_Button() {
-		$('#button').html(render_button_form_static());
+		$('#button').html(render_button_form());
 }
 $(document).ready(function() {
 	setTimeout(function(){
@@ -46,19 +48,23 @@ $(document).ready(function() {
 		reload_Button();
 		
 		$(document).on('click', 'button.command', function() {
-		var commandJson = { command: '' };
-		console.log(commandJson);
-		$('#button').html(render_button_form(commandJson));
-		$('#button-messages').html('');
-		$.postJSON('http://localhost:8090/smarthome/device/command', commandJson).done(function(data) {
-				$('#commandJson').html('');
-				$('#commandJson-messages').html(render_messages(data.messages));
-				reload_Command();
+			// var $inputs = $('#form :input');
+			console.log('hhhhhhhhhhhhhhhiii');
+			 
+			  var getVal = $("#MyInputId").val();
+            // $("p").append(getVal);
+			 //var command_post = $('form').attr('input');
+			var commandJson = { command: getVal};
+			console.log( getVal);
+			$.postJSON('http://localhost:8090/smarthome/device/command', commandJson).done(function(data) {
+					$('#commandJson').html('');
+					$('#commandJson-messages').html(render_messages(data.messages));
+					reload_Command();
 			}).fail(function(response) {
-				var data = response.responseJSON;
-				$('#commandJson-messages').html(render_messages(data));
+					var data = response.responseJSON;
+					$('#commandJson-messages').html(render_messages(data));
 			});
 			return false;
-	    });
+	     });
 	},400);
 });
